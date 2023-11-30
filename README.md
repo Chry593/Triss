@@ -10,3 +10,7 @@ Se si sbaglia e si mette la X o il O in una posizione già occupata, il turno vi
 Stesso programma di prima ma stavolta contro il computer. Quest'ultimo inserisce in una lista tutte le posizioni
 non occupate da una X o da un O e dopodichè sceglie randomicamente una delle posizioni all'interno della lista.
 Non fa controlli per vedere dove è più vantaggioso mettere il simbolo, quindi vincerete al 99,99% voi.
+
+# Triss ia vs ia
+Computer1 e computer2 si sfidano a triss, anche qui nessun controllo per vedere dove conviene mettere il simbolo
+per vincere, è tutto randomico ma comunque fico da vedere :)
