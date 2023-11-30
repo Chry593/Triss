@@ -158,7 +158,7 @@ def gioco():
     giocatore1 = str(input("inserisci nome giocatore 1: "))
     giocatore2 = "Computer"
     
-    #mosse fatte, max turni si possono fare = 6
+    #mosse fatte, max turni si possono fare = 9
     turni = 0 #1 #2 #3 #4 #5 #6 #7 #8 #9
     stampa_matrice(tavolo_gioco)
     while True:
