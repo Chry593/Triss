@@ -1,0 +1,222 @@
+"""
+triss
+pc vs pc
+"""
+import random,time
+
+def controllo_diagonale(matrice,giocatore):
+    prima_riga   = matrice[0]
+    seconda_riga = matrice[1]
+    terza_riga    = matrice[2]
+    
+    if prima_riga[0] == seconda_riga[1] == terza_riga[2] or prima_riga[2] == seconda_riga[1] == terza_riga[0]:
+        print(f"Hai vinto {giocatore}")
+        return 1
+
+        
+        
+def controllo_verticale(matrice,giocatore):
+    prima_riga    = matrice[0]
+    seconda_riga  = matrice[1]
+    terza_riga    = matrice[2]
+    
+    if prima_riga[0] == seconda_riga[0] == terza_riga[0] or prima_riga[1] == seconda_riga[1] == terza_riga[1] or prima_riga[2] == seconda_riga[2] == terza_riga[2]:
+        print(f"Hai vinto {giocatore}")
+        return 1
+
+def controllo_orizzontale(matrice,giocatore):
+    prima_riga    = matrice[0]
+    seconda_riga  = matrice[1]
+    terza_riga    = matrice[2]
+    
+    if prima_riga[0] == prima_riga[1] == prima_riga[2] or seconda_riga[0] == seconda_riga[1] == seconda_riga[2] or terza_riga[0] == terza_riga[1] == terza_riga[2]:
+        print(f"Hai vinto {giocatore}")
+        return 1
+
+
+
+def mossa_pc(matrice):
+    "ritorna la  mossa fatta"
+    prima_riga    = matrice[0]
+    seconda_riga  = matrice[1]
+    terza_riga    = matrice[2]
+    lista_pos_libere = []
+    #controllo delle posizioni libere
+    for n in prima_riga:
+        if str(n).isnumeric():
+            lista_pos_libere.append(n)
+            
+    for n in seconda_riga:
+        if str(n).isnumeric():
+            lista_pos_libere.append(n)
+            
+    for n in terza_riga:
+        if str(n).isnumeric():
+            lista_pos_libere.append(n)  
+            
+    scelta = random.choice(lista_pos_libere)
+    
+    return scelta
+    
+    
+    
+
+
+
+def mossa_giocatore(mossa,matrice,simbolo):
+    
+   
+    prima_riga    = matrice[0]
+    seconda_riga  = matrice[1]
+    terza_riga    = matrice[2]
+    
+    #prima riga
+    if mossa == 0:
+        if prima_riga[0] == "X" or prima_riga[0] == "O":
+            print("riga già occupata")
+        else:
+            prima_riga[0] = simbolo
+        
+    if mossa == 1:
+        if prima_riga[1] == "X" or prima_riga[1] == "O":
+            print("riga già occupata")
+        else:
+            prima_riga[1] = simbolo
+            
+    if mossa == 2:
+        if prima_riga[2] == "X" or prima_riga[2] == "O":
+            print("riga già occupata")
+        else:
+            prima_riga[2] = simbolo
+    
+   #seconda riga     
+    if mossa == 3:
+        if seconda_riga[0] == "X" or seconda_riga[0] == "O":
+            print("riga già occupata")
+        else:
+            seconda_riga[0] = simbolo
+        
+    if mossa == 4:
+        if seconda_riga[1] == "X" or seconda_riga[1] == "O":
+            print("riga già occupata")
+        else:
+            seconda_riga[1] = simbolo
+            
+    if mossa == 5:
+        if seconda_riga[2] == "X" or seconda_riga[2] == "O":
+            print("riga già occupata")
+        else:
+            seconda_riga[2] = simbolo
+    
+    #terza riga
+    if mossa == 6:
+        if terza_riga[0] == "X" or terza_riga[0] == "O":
+            print("riga già occupata")
+        else:
+            terza_riga[0] = simbolo
+        
+    if mossa == 7:
+        if terza_riga[1] == "X" or terza_riga[1] == "O":
+            print("riga già occupata")
+        else:
+            terza_riga[1] = simbolo
+            
+    if mossa == 8:
+        if terza_riga[2] == "X" or terza_riga[2] == "O":
+            print("riga già occupata")
+        else:
+            terza_riga[2] = simbolo
+    
+    return matrice
+
+
+
+
+def stampa_matrice(matrice):
+    prima_riga    = matrice[0]
+    seconda_riga  = matrice[1]
+    terza_riga    = matrice[2]
+    
+    print(f"""
+          |{prima_riga[0]}|{prima_riga[1]}|{prima_riga[2]}|
+          |{seconda_riga[0]}|{seconda_riga[1]}|{seconda_riga[2]}|
+          |{terza_riga[0]}|{terza_riga[1]}|{terza_riga[2]}|
+          """)
+
+
+def gioco():
+    
+    tavolo_gioco = [  
+                        [0,1,2],
+                        [3,4,5],
+                        [6,7,8]
+        
+                   ]
+
+    #scelta nomi giocatore
+    giocatore1 = "Computer1"
+    giocatore2 = "Computer2"
+    
+    #mosse fatte, max turni si possono fare = 6
+    turni = 0 
+
+    while True:
+        
+
+        
+        #mossa computer1
+        scelta = mossa_pc(tavolo_gioco)
+        print(f"{giocatore1} ha scelto la posizione {scelta}")
+        mossa_giocatore(scelta, tavolo_gioco, "X")
+        stampa_matrice(tavolo_gioco)
+        #controlli
+        if controllo_diagonale(tavolo_gioco,giocatore1) == 1:
+            stampa_matrice(tavolo_gioco)
+            break
+        if controllo_orizzontale(tavolo_gioco,giocatore1) == 1:
+            stampa_matrice(tavolo_gioco)
+            break
+        if controllo_verticale(tavolo_gioco,giocatore1) == 1:
+            stampa_matrice(tavolo_gioco)
+            break
+        turni += 1
+          
+        if turni == 9:
+            print("PAREGGIO!")
+            stampa_matrice(tavolo_gioco)
+            break
+        
+        
+        #piccolo ritardo per vedere meglio le mosse
+        time.sleep(2)
+        
+        #mossa giocatore 2
+        scelta = mossa_pc(tavolo_gioco)
+        print(f"{giocatore2} ha scelto la posizione {scelta}")
+        mossa_giocatore(scelta, tavolo_gioco, "O")
+        stampa_matrice(tavolo_gioco)
+        #controlli
+        if controllo_diagonale(tavolo_gioco,giocatore2) == 1:
+            stampa_matrice(tavolo_gioco)
+            break
+        if controllo_orizzontale(tavolo_gioco,giocatore2) == 1:
+            stampa_matrice(tavolo_gioco)
+            break
+        if controllo_verticale(tavolo_gioco,giocatore2) == 1:
+            stampa_matrice(tavolo_gioco)
+            break
+        
+        turni += 1
+        
+        #piccolo ritardo per vedere meglio le mosse
+        time.sleep(2)
+        
+
+        
+        
+#avvio gioco
+gioco()
+
+
+
+    
